@@ -3,7 +3,7 @@ print_r($DBH);
 $DBH=new PDO("mysql:host=rdbms.strato.de;dbname=DB2465298", "U2465298", "Abraham1");
 if(isset($_POST["absenden"])){
 	$username=$_POST["username"];
-	$password=hash("sha256",$_POST["passwort"]);
+	$password=base64_encode(hash("sha256",$_POST["passwort"], True));
 	$name=$_POST["vornachname"];
 	$gebdat=$_POST["gebdat"];
 	$sql="INSERT INTO dia_user VALUES(:username, :password, :name, :gebdat)";
