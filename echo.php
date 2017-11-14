@@ -9,7 +9,7 @@
 			$cmp=strcmp(trim($result[0]->password), trim($_POST["passwd"]));
 			if($cmp==0){
 				$sql="INSERT INTO dia_blutdruck (username, datum, zeit, syst, diast, puls) VALUES(:username, :datum, :zeit, :syst, :diast, :puls)";
-				$sql1="INSERT INTO dia_blutzucker (username, datum, zeit, bz, ke, ie, lantus) VALUES(:username, :datum, :zeit, :bz, :ke, :ie, :lantus)";
+				$sql1="INSERT INTO dia_blutzucker (username, datum, zeit, bz, ke, ie, lantus) VALUES(:username, STR_TO_DATE(:datum, '%d.%m.%Y'), :zeit, :bz, :ke, :ie, :lantus)";
 				$werte=json_decode($_POST["werte"]);
 				$fehler=false;
 				for($i=0;$i<count($werte);$i++){
